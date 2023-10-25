@@ -1,4 +1,5 @@
 function calculatePrices() {
+    console.log('Hello')
     // Получаем значения из полей ввода
     const totalPrice = parseFloat(document.getElementById('totalPrice').value);
     const totalVolume = parseFloat(document.getElementById('totalVolume').value);
