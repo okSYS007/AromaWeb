@@ -24,19 +24,23 @@ function calculatePrices() {
         for (const size in bottlePrices) {
             if (bottlePrices.hasOwnProperty(size)) {
                 results[size] = pricePerML * size + bottlePrices[size] + additionalExpenses;
-                profits[size] = results[size] * totalVolume / size;
+                profits[size] = results[size] * totalVolume / size - totalPrice;
             }
         }
 
         // Отображаем результат на странице без наценки
         displayResults(results, profits, 'price-', 'profit-');
 
+        // Вычисляем цену за 1 мл
+        let PriceWithMarkup = pricePerML + additionalExpenses;
+        const pricePerMLmarkup = PriceWithMarkup + ((PriceWithMarkup * markup) / 100)
+        
         // Вычисляем цену для каждого флакона с учетом наценки
         const markedUpResults = {};
         const markedUpProfits = {};
         for (const size in bottlePrices) {
             if (bottlePrices.hasOwnProperty(size)) {
-                markedUpResults[size] = (pricePerML + (pricePerML * markup / 100)) * size + bottlePrices[size] + additionalExpenses;
+                markedUpResults[size] = pricePerMLmarkup * size + bottlePrices[size];
                 markedUpProfits[size] = markedUpResults[size] * totalVolume / size - totalPrice;
             }
         }
