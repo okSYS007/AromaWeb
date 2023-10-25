@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Простой проект</title>
-    <script src="script.js"></script>
+    <title>Калькулятор цены за 1 мл</title>
 </head>
 <body>
-    <button onclick="showAlert()">Нажми меня</button>
+    <h1>Калькулятор цены за 1 мл духов</h1>
+    
+    <label for="totalPrice">Общая цена духов (грн):</label>
+    <input type="number" id="totalPrice" placeholder="Введите общую цену"><br><br>
+
+    <label for="totalVolume">Общий литраж (мл):</label>
+    <input type="number" id="totalVolume" placeholder="Введите общий литраж"><br><br>
+
+    <label for="additionalExpenses">Дополнительные расходы (грн):</label>
+    <input type="number" id="additionalExpenses" placeholder="Введите дополнительные расходы"><br><br>
+
+    <label for="markup">Наценка (%):</label>
+    <input type="number" id="markup" placeholder="Введите наценку"><br><br>
+
+    <button onclick="calculatePrices()">Рассчитать</button>
+
+    <p>Результаты расчета для разных флаконов без наценки:</p>
+    <ul>
+        <li>3 мл: <span id="price-3-ml"></span>, Прибыль: <span id="profit-3-ml"></span></li>
+        <li>5 мл: <span id="price-5-ml"></span>, Прибыль: <span id="profit-5-ml"></span></li>
+        <li>10 мл: <span id="price-10-ml"></span>, Прибыль: <span id="profit-10-ml"></span></li>
+        <li>20 мл: <span id="price-20-ml"></span>, Прибыль: <span id="profit-20-ml"></span></li>
+    </ul>
+
+    <p>Результаты расчета для разных флаконов с наценкой:</p>
+    <ul>
+        <li>3 мл: <span id="price-marked-up-3-ml"></span>, Прибыль: <span id="profit-marked-up-3-ml"></span></li>
+        <li>5 мл: <span id="price-marked-up-5-ml"></span>, Прибыль: <span id="profit-marked-up-5-ml"></span></li>
+        <li>10 мл: <span id="price-marked-up-10-ml"></span>, Прибыль: <span id="profit-marked-up-10-ml"></span></li>
+        <li>20 мл: <span id="price-marked-up-20-ml"></span>, Прибыль: <span id="profit-marked-up-20-ml"></span></li>
+    </ul>
+
+    <script src="script.js"></script>
 </body>
 </html>
