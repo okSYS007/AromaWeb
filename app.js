@@ -1,26 +1,11 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const ejs = require('ejs');
 const app = express();
+const path = require('path');
 
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.render('views/index', { result: null });
-});
-
-app.post('/calculate', (req, res) => {
-    const volume = parseFloat(req.body.volume);
-    const cost = parseFloat(req.body.cost);
-    const expenses = parseFloat(req.body.expenses);
-
-    if (!isNaN(volume) && !isNaN(cost) && !isNaN(expenses)) {
-        const profit = volume * (cost - expenses);
-        res.render('views/index', { result: { profit, cost } });
-    } else {
-        res.render('views/index', { result: null });
-    }
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const port = process.env.PORT || 3000;
